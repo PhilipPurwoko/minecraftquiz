@@ -1,4 +1,9 @@
 ## Minecraft Quiz
+![GitHub top language](https://img.shields.io/github/languages/top/PhilipPurwoko/minecraftquiz)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/PhilipPurwoko/minecraftquiz)
+![GitHub repo size](https://img.shields.io/github/repo-size/PhilipPurwoko/minecraftquiz)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/PhilipPurwoko/minecraftquiz)
+
 Want to test your knowledge of minecraft ? Try Minecraft Quiz now!
 
 ### Getting Started
