@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
   final Function resetquiz;
+  final int score;
+  final int maxScore;
 
-  Result(this.resetquiz);
+  Result({
+    @required this.score,
+    @required this.maxScore,
+    @required this.resetquiz,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +19,7 @@ class Result extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'Final Score : 100',
+            'Final Score : ' + score.toString() + '/' + maxScore.toString(),
             style: TextStyle(fontSize: 18),
           ),
           ElevatedButton(

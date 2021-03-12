@@ -17,21 +17,48 @@ class _QuizState extends State<MyApp> {
   final database = const [
     {
       'questionText': 'How do you break bedrock ?',
-      'choices': [
-        'Using piston glitch',
-        'Using netherite pickaxe for sure',
-        'No way to break bedrock'
-      ]
+      'questionItem': {
+        'choice': [
+          'Using piston glitch',
+          'Using netherite pickaxe for sure',
+          'No way to break bedrock',
+        ],
+        'answer': 0
+      }
     },
     {
       'questionText': 'How do you mine a dragon egg ?',
-      'choices': ['Using torch under the egg block', 'Tap to collect']
+      'questionItem': {
+        'choice': [
+          'Tap to collect',
+          'Using torch under the egg block',
+          'Mine with pickaxe'
+        ],
+        'answer': 1
+      }
+    },
+    {
+      'questionText': 'How to get netherite ingot ?',
+      'questionItem': {
+        'choice': [
+          'Mine netherite ore in the nether',
+          'Burn ancient debris',
+          'Combine scrap with gold ingot'
+        ],
+        'answer': 2
+      }
     }
   ];
   var _questionIndex = 0;
+  var _score = 0;
 
-  void _answerQuestion() {
+  void _answerQuestion(String answer, String correctAnswer) {
+    print('User Answer : ' + answer);
+    print('Correct Answer : ' + correctAnswer);
     setState(() {
+      if (answer == correctAnswer) {
+        _score += 10;
+      }
       _questionIndex += 1;
     });
   }
@@ -39,6 +66,7 @@ class _QuizState extends State<MyApp> {
   void _resetQuiz() {
     setState(() {
       _questionIndex = 0;
+      _score = 0;
     });
   }
 
@@ -62,7 +90,11 @@ class _QuizState extends State<MyApp> {
                 answerHandler: _answerQuestion,
                 questionIndex: _questionIndex,
               )
-            : Result(_resetQuiz),
+            : Result(
+                score: _score,
+                maxScore: database.length * 10,
+                resetquiz: _resetQuiz,
+              ),
       ),
     );
   }

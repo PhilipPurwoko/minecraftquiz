@@ -15,11 +15,18 @@ class Quiz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, Object> questions = database[questionIndex]['questionItem'];
+    List<String> questionList = questions['choice'];
+
     return Column(
       children: [
-        Question(database[questionIndex]['questionText']),
-        ...(database[questionIndex]['choices'] as List<String>).map((choices) {
-          return Answer(choices, answerHandler);
+        Question(
+            questionIndex: questionIndex + 1,
+            questionText: database[questionIndex]['questionText'],
+            totalQuestion: database.length),
+        ...(questionList).map((question) {
+          return Answer(question,
+              () => answerHandler(question, questionList[questions['answer']]));
         })
       ],
     );
